@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <meta name="description" content="Elite Gym offers top-notch fitness services. Join us today and get exclusive benefits!">
+    <meta name="keywords" content="fitness, gym, personal training, plans, wellness, exercise">
+<!-- meta tags for SEO -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+
+</head>
+<body id="top">
+    <!--html attributes- Reference W3Schools(https://www.w3schools.com/html/html_attributes.asp)-->
+    <header>
+        <a href="index.html">
+            <img src="images/gym_logo.png" alt="Gym Logo">
+            <!--Royalty free logo downloaded from(www.canvas.com)-->
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="plans.html">Membership Plans</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <section class="gallery">
+        <h2>Our Gallery</h2>
+        <!--Referencing figcaption(https://www.w3schools.com/tags/tag_figcaption.asp)-->
+        <div class="image-gallery">
+            <figure>
+                <a href="#" onclick="showDescription('Group Workout for all levels')">
+                    <img src="images/group_classes.jpg" alt="fitness group">
+                    <!--Royalty free images downloaded from (www.unsplash.com)-->
+                </a>
+                <figcaption>Group Workout</figcaption>
+            </figure>
+            
+            <figure>
+                <a href="#" onclick="showDescription('Personalised training sessions')">
+                    <!--onclick event to show description-->
+                    <img src="images/personal_trainer.jpg" alt="personal training">
+                </a>
+                <!--Royalty free images downloaded from (www.unsplash.com)-->
+                <figcaption>Personal Training</figcaption>
+            </figure>
+            
+            <figure>
+                <a href="#" onclick="showDescription('Indoor swimming pool for relaxation and fitness. Available all year round')">
+                    <img src="images/swimming.jpg" alt="Swimming Pool">
+                </a>
+                <!--Royalty free images downloaded from (www.unsplash.com)-->
+                <figcaption>Indoor Swimming Pool</figcaption>
+            </figure>
+            
+            <figure>
+                <a href="#" onclick="showDescription('Yoga and Pilates classes for flexibility & core strength')">
+                    <img src="images/pilate_class.jpg" alt="pilates class">
+                </a>
+                <!--Royalty free images downloaded from (www.unsplash.com)-->
+                <figcaption>Yoga & Pilates</figcaption>
+            </figure>
+
+            <figure>
+                <a href="#" onclick="showDescription('Weight training for muscle building and performance enhancement')">
+                    <img src="images/weight_training.jpg" alt="weight training">
+                </a>
+                <!--Royalty free images downloaded from (www.unsplash.com)-->
+                <figcaption>Muscles & Performance Enhancement</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <script>
+        function showDescription(description) {
+        // get the description container
+        const descriptionContainer = document.getElementById('description');
+        
+        // Update the description text
+        descriptionContainer.scrollIntiView({ behaviour: "smooth" })
+        descriptionContainer.innerHTML = `<h3>${description}</h3>`
+        ;
+        // to scroll to the description container
+        }
+    </script>
+  
+
+    <!--footer- referemce- W3schools(https://www.w3schools.com/html/html_layout.asp)-->
+    <footer>
+        <p>&copy; 2025 Elite Gym Services. All rights reserved.</p>
+        <p><a href="#top">Back to Top</a></p>
+        <p>Images sourced from <a href="https://www.unsplash.com" target="_blank">Unsplash</a>. References from <a href="https://www.w3schools.com" target="_blank">W3Schools</a>.</p>
+    </footer>
+
+</body>
+</html>

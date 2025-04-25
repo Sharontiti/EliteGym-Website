@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <meta name="description" content="Elite Gym offers top-notch fitness services. Join us today and get exclusive benefits!">
+    <meta name="keywords" content="fitness, gym, personal training, plans, wellness, exercise">
+<!-- meta tags for SEO -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<!--html attributes- Reference W3Schools(https://www.w3schools.com/html/html_attributes.asp)-->
+
+<body id="top">
+    >
+    <header>
+        <a href="index.html">
+            <img src="images/gym_logo.png" alt="Gym Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="plans.html">Membership Plans</a></li>
+            </ul>
+        </nav>
+<!-- unordered list- W3Schools Reference - (https://www.w3schools.com/html/unorderedlist.asp) -->
+    </header>
+
+    <main>
+
+        <h1>Welcome to Elite Gym</h1>
+        <p>...where we provide top-notch fitness services to support goals.</p>
+<!--class attribute- reference- w3schools (https://www.w3schools.com/html/html_classes.asp)-->
+
+        <section class="homepage-banner">
+            <h2>Join Us Today!</h2>
+            <img src="images/home_image.jpg" alt="Welcome Image">
+        </section>
+<!--link images- reference- w3schools(https://www.w3schools.com/html/html_images.asp)-->
+
+        <h2>Our Services</h2>
+        <ul>
+            <li>Fitness Group Classes</li>
+            <li>Personal Training</li>
+            <li>Indoor Swimming</li>
+            <li>Yoga & Pilates</li>
+            <li>Muscles & Performance Enhancement</li>
+        </ul>
+
+        <h2>Contact Information</h2>
+        
+        <table class="structured-table">
+            <thead> 
+                <tr>
+                    <th>Services</th>
+                    <th>Contact</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gym Inquiries</td>
+                    <td>info@elitegym.com</td>
+                    <td>089-946-0124</td>
+                </tr>
+                <tr>
+                    <td>Personal Trainer</td>
+                    <td>info@elitegym.com</td>
+                    <td>089-946-0124</td>
+                </tr>
+            </tbody>
+        </table>
+
+            <section class="mini-game container mt-5 text-center">
+                <h2>Mini Game: Exercise Roll</h2>
+                <h2>Choose Your Workout</h2>
+                <p>Pick your move and see if it wins against the computer's choice!!</p>
+              
+                <table class="table mx-auto" style="max-width: 400px;">
+                  <tr>
+                    
+                    <td>
+                      <label>Push-ups</label>
+                      <input type="radio" name="move" id="pushups" onclick="unlockPlay()">
+                    </td>
+                  </tr>
+                  <tr>
+                    
+                    <td>
+                      <label>Squats</label>
+                      <input type="radio" name="move" id="squats" onclick="unlockPlay()">
+                    </td>
+                  </tr>
+                  <tr>
+                    
+                    <td>
+                      <label>Plank</label>
+                      <input type="radio" name="move" id="plank" onclick="unlockPlay()">
+                    </td>
+                  </tr>
+                </table> 
+              <!--reference- table (https://www.w3schools.com/html/html_tables.asp)-->
+                <button id="btnPlay" disabled class="btn btn-outline-success">Play</button>
+              
+                <hr>
+                <h3>Computer Chooses:</h3>
+                <p id="computer-choice"></p>
+              
+                <h3>Result:</h3>
+                <p id="game-result"></p>
+                <button id="btnRestart" class="btn btn-outline-primary mt-3">
+                    <img src="images/restart_icon.png" alt="Restart the game">
+                </button> <!--to restart game-->
+            </section>
+
+              
+            <script>
+                const options = ['pushups', 'squats', 'plank'];
+                function unlockPlay() {
+                    document.getElementById('btnPlay').disabled = false;
+                }
+
+                document.getElementById('btnPlay').addEventListener('click', () => {
+                   // to get the user to pick a move
+                    let userPick = options.find(opt => document.getElementById(opt).checked);
+                    let result = '';
+                    // to check the user has selected a move
+                    if (!userPick) {
+                        alert("Please select an exercise before playing!");
+                        return;
+                    }
+                   // to get computer to pick
+                    let compPick = options[Math.floor(Math.random() * options.length)];
+                    document.getElementById('computer-choice').innerText = compPick;
+                    // “beats” the logic (pushups > plank, plank > squats, squats > pushups)
+                    if (userPick === compPick) {
+                        result = "It's a tie!";
+                    } else if (
+                        (userPick === 'pushups' && compPick === 'squats') ||
+                        (userPick === 'squats' && compPick === 'plank') ||
+                        (userPick === 'plank' && compPick === 'pushups')
+                    ) {
+                        result = "Welldone, you beat the computer!";
+                    } else {
+                        result = "Computer wins!";
+                    }
+                    // will display result
+                    
+                    document.getElementById('game-result').innerText = result;
+                });
+            </script>
+
+              <script>
+                document.getElementById('btnRestart').addEventListener('click', () => {
+                    // to unselect all radio buttons
+                    document.getElementById('computer-choice').innerText = '';
+                    document.getElementById('game-result').innerText = '';
+                    // to disable play again
+                    document.querySelectorAll('input[name="move"]').forEach(input => input.checked = false);
+                    //to clear the result
+                    document.getElementById('btnPlay').disabled = true;
+                });
+                
+              </script>
+
+
+        </main>
+    <footer>
+        <p>&copy; 2025 Elite Gym Services. All rights reserved.</p>
+        <p><a href="#top">Back to Top</a></p>
+    </footer>
+
+</body>
+</html>
